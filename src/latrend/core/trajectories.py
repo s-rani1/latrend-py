@@ -23,5 +23,9 @@ def trajectories(method: LCMethod | None, data: pd.DataFrame) -> dict[Any, pd.Da
     df = data[[id_col, time_col, outcome_col]].copy()
     df = df.dropna(subset=[id_col, time_col, outcome_col])
     df = df.sort_values([id_col, time_col], kind="mergesort")
-    return {k: v.rename(columns={id_col: "Id", time_col: "Time", outcome_col: "Y"}).reset_index(drop=True) for k, v in df.groupby(id_col, sort=False)}
-
+    out = {}
+    for k, v in df.groupby(id_col, sort=False):
+        out[k] = v.rename(columns={id_col: "Id", time_col: "Time", outcome_col: "Y"}).reset_index(
+            drop=True
+        )
+    return out

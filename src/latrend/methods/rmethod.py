@@ -50,7 +50,8 @@ def lcMethodR(
     **kwargs: Any,
 ) -> RLCMethod:
     """
-    Create an R-backed lcMethod by name, e.g. lcMethodR("lcMethodLcmmGMM", formula="Y~Time", nClusters=3).
+    Create an R-backed lcMethod by name, e.g.
+    lcMethodR("lcMethodLcmmGMM", formula="Y~Time", nClusters=3).
     """
 
     r_args = dict(kwargs)
@@ -70,4 +71,3 @@ def lcMethodR(
         r_method=r_method,
         r_args=r_args,
     )
-

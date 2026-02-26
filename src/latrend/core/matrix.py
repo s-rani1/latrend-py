@@ -5,7 +5,9 @@ from typing import Any
 import pandas as pd
 
 
-def tsmatrixToFrame(x: pd.DataFrame, id: str = "Id", time: str = "Time", y: str = "Y") -> pd.DataFrame:
+def tsmatrixToFrame(
+    x: pd.DataFrame, id: str = "Id", time: str = "Time", y: str = "Y"
+) -> pd.DataFrame:
     """
     Convert a wide trajectory matrix (index=Id, columns=Time) to long-format frame.
     """
@@ -25,7 +27,9 @@ def tsmatrixToFrame(x: pd.DataFrame, id: str = "Id", time: str = "Time", y: str 
     return out
 
 
-def tsframeToMatrix(x: pd.DataFrame, id: str = "Id", time: str = "Time", y: str = "Y") -> pd.DataFrame:
+def tsframeToMatrix(
+    x: pd.DataFrame, id: str = "Id", time: str = "Time", y: str = "Y"
+) -> pd.DataFrame:
     """
     Convert a long-format trajectory frame to wide matrix.
     """

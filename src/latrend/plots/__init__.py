@@ -1,5 +1,5 @@
-from .classes import plotClassProbabilities, plotClassProportions
 from ._theme import LATREND_PALETTE, theme_latrend
+from .classes import plotClassProbabilities, plotClassProportions
 from .metrics import plotMetric
 from .trajectories import (
     make_clusterPropLabels,

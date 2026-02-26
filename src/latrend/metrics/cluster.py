@@ -1,10 +1,9 @@
 from __future__ import annotations
 
 import numpy as np
-import pandas as pd
 
-from ..core.model import LCModel
 from ..core.matrix import tsmatrix
+from ..core.model import LCModel
 
 
 def silhouette_score_long(model: LCModel) -> float:
@@ -38,4 +37,3 @@ def silhouette_score_long(model: LCModel) -> float:
     if len(np.unique(labels)) < 2:
         return float("nan")
     return float(silhouette_score(X, labels, metric="euclidean"))
-

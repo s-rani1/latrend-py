@@ -120,7 +120,6 @@ def latrendData(seed: int = 1) -> pd.DataFrame:
     """
 
     rng = np.random.default_rng(seed)
-    n = 200
     time_points = np.arange(0, 10, dtype=float)
 
     # Cluster parameters (intercept, slope) -- roughly matching R's latrendData

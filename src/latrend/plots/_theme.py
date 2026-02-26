@@ -24,7 +24,7 @@ from ._backend import require_plotnine
 # Note: the palette depends on *n* (it is re-computed to evenly space hues).
 
 
-def _hcl_to_hex(h: np.ndarray, *, c: float = 100.0, l: float = 65.0) -> list[str]:
+def _hcl_to_hex(h: np.ndarray, *, c: float = 100.0, lightness: float = 65.0) -> list[str]:
     """
     Convert polar LUV (HCL) to sRGB hex.
 
@@ -45,7 +45,7 @@ def _hcl_to_hex(h: np.ndarray, *, c: float = 100.0, l: float = 65.0) -> list[str
     u = c * np.cos(hr)
     v = c * np.sin(hr)
 
-    L = float(l)
+    L = float(lightness)
     if L == 0.0:
         X = np.zeros_like(u)
         Y = np.zeros_like(u)
@@ -96,13 +96,13 @@ def ggplot2_hue_palette(
     *,
     h: tuple[float, float] = (15.0, 375.0),
     c: float = 100.0,
-    l: float = 65.0,
+    lightness: float = 65.0,
 ) -> list[str]:
     """Return the ggplot2 default discrete hue palette for *n* categories."""
     if n <= 0:
         return []
     hues = np.linspace(h[0], h[1], n + 1)[:-1]
-    return _hcl_to_hex(hues, c=c, l=l)
+    return _hcl_to_hex(hues, c=c, lightness=lightness)
 
 
 LATREND_PALETTE = ggplot2_hue_palette(9)
@@ -155,8 +155,6 @@ def apply_mpl_theme(ax, *, base_size: float = 11) -> None:
     """
     Style a matplotlib Axes to approximate theme_gray() from ggplot2.
     """
-    import matplotlib as mpl
-
     ax.set_facecolor("#EBEBEB")
     ax.figure.set_facecolor("white")
 

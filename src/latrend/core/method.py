@@ -30,7 +30,9 @@ class LCMethod:
     def prepareData(self, data: pd.DataFrame) -> pd.DataFrame:
         df = data.copy()
         self.validate(df)
-        df = df[[self.id, self.time, self.outcome] + [c for c in df.columns if c not in (self.id, self.time, self.outcome)]]
+        keep = [self.id, self.time, self.outcome]
+        extras = [c for c in df.columns if c not in (self.id, self.time, self.outcome)]
+        df = df[keep + extras]
         df = df.dropna(subset=[self.id, self.time, self.outcome])
         df[self.time] = pd.to_numeric(df[self.time], errors="coerce")
         df[self.outcome] = pd.to_numeric(df[self.outcome], errors="coerce")
@@ -66,4 +68,3 @@ class LCMethod:
             "outcome": self.outcome,
             "name": self.name,
         }
-

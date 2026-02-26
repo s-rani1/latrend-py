@@ -1,27 +1,27 @@
 from ._version import __version__
+from .backends import is_r_available
+from .core.matrix import tsframe, tsframeToMatrix, tsmatrix, tsmatrixToFrame
 from .core.method import LCMethod
 from .core.model import LCModel, LCModels
 from .core.pipeline import fitLatrendMethod, latrendBatchCluster, latrendCluster, latrendRepCluster
 from .core.trajectories import trajectories
-from .core.matrix import tsframe, tsframeToMatrix, tsmatrix, tsmatrixToFrame
 from .data.simulate import generateData, generateLongData, generateTrajectories, latrendData
 from .methods.features import lcMethodFeatures
 from .methods.kml import lcMethodKML
 from .methods.lmkm import lcMethodLMKM
 from .methods.random import lcMethodRandom
 from .methods.rmethod import lcMethodR
-from .backends import is_r_available
 from .plots import (
-    plotClassProbabilities,
-    plotClassProportions,
-    plotMetric,
-    plotClusterTrajectories,
-    plotFittedTrajectories,
-    plotTrajectories,
-    theme_latrend,
     LATREND_PALETTE,
     make_clusterPropLabels,
     make_clusterSizeLabels,
+    plotClusterTrajectories,
+    plotClassProbabilities,
+    plotClassProportions,
+    plotFittedTrajectories,
+    plotMetric,
+    plotTrajectories,
+    theme_latrend,
 )
 from .report import lcModelReport
 

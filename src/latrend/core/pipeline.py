@@ -65,7 +65,9 @@ def latrendBatchCluster(
         method = methods
         if nClusters is None:
             if not hasattr(method, "nClusters"):
-                raise ValueError("nClusters must be provided for methods without a nClusters attribute")
+                raise ValueError(
+                    "nClusters must be provided for methods without a nClusters attribute"
+                )
             nClusters = [int(getattr(method, "nClusters"))]
         for k in nClusters:
             try:
@@ -114,6 +116,7 @@ def latrendRepCluster(
         model = latrendCluster(m, data)
         if metric == "silhouette":
             from ..metrics.cluster import silhouette_score_long
+
             model.meta.setdefault("metrics", {})["silhouette"] = silhouette_score_long(model)
         out.append(model)
     return out

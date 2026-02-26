@@ -1,6 +1,9 @@
 # latrend (Python)
 
-[![CI](https://github.com/s-rani1/latrend-py/actions/workflows/ci.yml/badge.svg)](https://github.com/s-rani1/latrend-py/actions)
+[![Tests](https://github.com/s-rani1/latrend-py/actions/workflows/ci.yml/badge.svg)](https://github.com/s-rani1/latrend-py/actions/workflows/ci.yml)
+[![PyPI version](https://img.shields.io/pypi/v/latrend.svg)](https://pypi.org/project/latrend/)
+[![PyPI downloads](https://static.pepy.tech/badge/latrend)](https://pepy.tech/project/latrend)
+[![Docs](https://img.shields.io/badge/docs-README-blue.svg)](https://github.com/s-rani1/latrend-py#readme)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/downloads/)
 [![License: GPL v2+](https://img.shields.io/badge/License-GPL%20v2%2B-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
 
@@ -222,6 +225,13 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup and guidelines.
 
 If you use `latrend` (Python) in academic work, please cite this repository.
 Citation metadata is provided in [CITATION.cff](CITATION.cff) (GitHub will expose this via "Cite this repository").
+
+## Release Notes
+
+For every release:
+1. Update version in `pyproject.toml`, `setup.cfg`, and `src/latrend/_version.py`.
+2. Add a clear section to `CHANGELOG.md` with user-visible changes.
+3. Tag the release on GitHub and reuse the changelog text in release notes.
 
 ## License
 
