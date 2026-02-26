@@ -137,6 +137,8 @@ p = p + labs(
 p.save("kml_model4_like_R.png", dpi=150)
 ```
 
+![R plot(kmlModel4) equivalent](docs/images/kml_model4_like_R.png)
+
 ### Data utilities
 
 ```python
