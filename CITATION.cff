@@ -8,7 +8,7 @@ authors:
   - family-names: "Rani"
     given-names: "S R"
     email: "s.rani@live.com"
-abstract: "Python port of the R package latrend for longitudinal trajectory clustering."
+abstract: "Independent Python port inspired by the R package latrend for longitudinal trajectory clustering."
 keywords:
   - longitudinal
   - trajectory clustering
