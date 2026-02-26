@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+title: "latrend (Python)"
+version: "0.1.0"
+type: software
+license: "GPL-2.0-or-later"
+authors:
+  - name: "latrend-py contributors"
+abstract: "Python port of the R package latrend for longitudinal trajectory clustering."
+keywords:
+  - longitudinal
+  - trajectory clustering
+  - latent class
+  - time series
+repository-code: "https://github.com/s-rani1/latrend-py"
+url: "https://github.com/s-rani1/latrend-py"
+references:
+  - type: software
+    title: "latrend (R package)"
+    authors:
+      - family-names: "Den Teuling"
+        given-names: "Niek"
+    url: "https://github.com/niekdt/latrend"
