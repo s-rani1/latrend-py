@@ -88,6 +88,8 @@ best = models.bestModel(key="silhouette", maximize=True)
 ### KML Parity Mode
 
 Use `kml_strict` to better match R KML behavior via multi-start selection:
+- `kml_fast`: faster baseline.
+- `kml_strict`: parity-focused mode for closer R-style clustering (not guaranteed exact 1:1 output).
 
 ```python
 method = lt.lcMethodKML(
