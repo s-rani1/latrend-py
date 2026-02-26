@@ -3,6 +3,8 @@ import sys
 import tempfile
 import unittest
 
+import numpy as np
+
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
@@ -56,6 +58,40 @@ class TestClustering(unittest.TestCase):
         model = lt.latrendCluster(method, df)
         self.assertEqual(model.nClusters(), 3)
         self.assertEqual(len(model.clusters), 30)
+
+    def test_kml_clusters(self):
+        df = lt.generateLongData(nIndividuals=30, nTime=6, nClusters=3, seed=1)
+        method = lt.lcMethodKML(nClusters=3, seed=1)
+        model = lt.latrendCluster(method, df)
+        self.assertEqual(model.nClusters(), 3)
+        self.assertEqual(len(model.clusters), 30)
+
+    def test_kml_strict_demo_parity(self):
+        # Acceptance test aligned with the R demo intent (not exact identity).
+        from sklearn.metrics import adjusted_rand_score
+
+        df = lt.latrendData()
+        method = lt.lcMethodKML(
+            nClusters=4,
+            mode="kml_strict",
+            center=True,
+            scale=False,
+            distance="euclidean",
+            seed=265368763,
+            nStarts=20,
+            nInit=100,
+            maxIter=500,
+        )
+        model = lt.latrendCluster(method, df)
+
+        ref = df.groupby("Id")["Class"].first().astype(int)
+        pred = model.clusters.astype(int).loc[ref.index]
+        ari = adjusted_rand_score(ref.values, pred.values)
+        self.assertGreaterEqual(ari, 0.80)
+
+        target_sorted = np.array([0.35, 0.25, 0.225, 0.175], dtype=float)
+        got_sorted = np.sort(model.classProportions().to_numpy(dtype=float))[::-1]
+        self.assertLessEqual(float(np.max(np.abs(got_sorted - target_sorted))), 0.10)
 
     def test_features_clusters(self):
         df = lt.generateLongData(nIndividuals=30, nTime=6, nClusters=3, seed=1)

@@ -6,6 +6,7 @@ from .core.trajectories import trajectories
 from .core.matrix import tsframe, tsframeToMatrix, tsmatrix, tsmatrixToFrame
 from .data.simulate import generateData, generateLongData, generateTrajectories, latrendData
 from .methods.features import lcMethodFeatures
+from .methods.kml import lcMethodKML
 from .methods.lmkm import lcMethodLMKM
 from .methods.random import lcMethodRandom
 from .methods.rmethod import lcMethodR
@@ -44,6 +45,7 @@ __all__ = [
     "lcMethodRandom",
     "lcMethodLMKM",
     "lcMethodFeatures",
+    "lcMethodKML",
     "lcMethodR",
     "is_r_available",
     # Pipeline

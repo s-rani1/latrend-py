@@ -64,6 +64,7 @@ except AttributeError:
 | Method | Class | Description |
 |---|---|---|
 | Random baseline | `lcMethodRandom` | Assigns trajectories to clusters uniformly at random |
+| KML-style | `lcMethodKML` | KMeans clustering on trajectory vectors (`kml_fast`/`kml_strict`) |
 | Linear-mixed K-means | `lcMethodLMKM` | Per-individual linear regression + KMeans on coefficients |
 | Feature-based | `lcMethodFeatures` | 20+ trajectory features + KMeans |
 | R backend (any) | `lcMethodR` / dynamic `lcMethod*` | Delegates to the upstream R package via rpy2 |
@@ -82,6 +83,25 @@ models = lt.latrendRepCluster(method, data, nRep=10)
 
 # Model selection
 best = models.bestModel(key="silhouette", maximize=True)
+```
+
+### KML Parity Mode
+
+Use `kml_strict` to better match R KML behavior via multi-start selection:
+
+```python
+method = lt.lcMethodKML(
+    nClusters=4,
+    mode="kml_strict",      # or: "kml_fast"
+    nStarts=20,
+    nInit=100,
+    maxIter=500,
+    center=True,
+    scale=False,
+    distance="euclidean",
+    seed=265368763,
+)
+model = lt.latrendCluster(method, data)
 ```
 
 ### Plotting (R ggplot2-matching theme)
@@ -177,7 +197,7 @@ latrend_py/
     __init__.py          # Public API
     core/                # LCMethod, LCModel, pipeline, matrix converters
     data/                # Data generation + built-in latrendData
-    methods/             # lcMethodRandom, lcMethodLMKM, lcMethodFeatures, lcMethodR
+    methods/             # lcMethodRandom, lcMethodKML, lcMethodLMKM, lcMethodFeatures, lcMethodR
     metrics/             # Silhouette score
     plots/               # All plotting functions + theme
     backends/            # rpy2-based R integration
