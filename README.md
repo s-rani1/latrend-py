@@ -239,5 +239,4 @@ GPL-2.0-or-later (aligned with the upstream R package).
 
 ## Acknowledgements
 
-This package is a Python port of the [latrend](https://github.com/niekdt/latrend) R package
-by Niek Den Teuling (Philips Research).
+This repository is an independent Python port inspired by the [latrend](https://github.com/niekdt/latrend) R package by Niek Den Teuling (Philips Research).
