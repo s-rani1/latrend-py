@@ -18,11 +18,18 @@ analyses are interchangeable between languages.
 ## Installation
 
 ```bash
-# Editable install (recommended for development)
-pip install -e ".[dev,plot]"
+# Install from PyPI (recommended for users)
+pip install latrend
+```
 
-# Minimal install (matplotlib-only plotting)
-pip install -e .
+```bash
+# Install latest from GitHub (before/without PyPI release)
+pip install "git+https://github.com/s-rani1/latrend-py.git"
+```
+
+```bash
+# Editable install (development)
+pip install -e ".[dev,plot]"
 ```
 
 ## Quickstart

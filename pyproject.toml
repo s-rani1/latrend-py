@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=61", "wheel"]
+requires = ["setuptools>=61,<77", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -62,6 +62,7 @@ Changelog = "https://github.com/s-rani1/latrend-py/blob/main/CHANGELOG.md"
 
 [tool.setuptools]
 package-dir = { "" = "src" }
+license-files = []
 
 [tool.setuptools.packages.find]
 where = ["src"]
