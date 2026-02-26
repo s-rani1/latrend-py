@@ -31,7 +31,6 @@ from ._theme import (
     theme_latrend,
 )
 
-
 # ---------------------------------------------------------------------------
 # Cluster label helpers (mirrors R make.clusterPropLabels / make.clusterSizeLabels)
 # ---------------------------------------------------------------------------
