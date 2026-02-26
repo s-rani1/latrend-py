@@ -14,8 +14,6 @@ plotClusterTrajectories() functions, including:
 from __future__ import annotations
 
 from typing import Any, Callable
-
-import matplotlib as mpl
 import numpy as np
 import pandas as pd
 from matplotlib.axes import Axes
@@ -341,7 +339,9 @@ def plotClusterTrajectories(
         if has_ribbon:
             p = p + p9.geom_ribbon(
                 data=summary,
-                mapping=p9.aes(x=time_col, ymin="ymin", ymax="ymax", fill="Cluster", group="Cluster"),
+                mapping=p9.aes(
+                    x=time_col, ymin="ymin", ymax="ymax", fill="Cluster", group="Cluster"
+                ),
                 alpha=0.2,
                 color="none",
                 show_legend=not facet,
@@ -370,7 +370,9 @@ def plotClusterTrajectories(
         if has_ribbon:
             p = p + scale_fill_latrend(n_clusters)
 
-        p = p + p9.labs(title="Cluster trajectories", x=time_col, y=y_col, color="Cluster", fill="Cluster")
+        p = p + p9.labs(
+            title="Cluster trajectories", x=time_col, y=y_col, color="Cluster", fill="Cluster"
+        )
         p = p + theme_latrend(figure_size=figure_size, base_size=base_size)
 
         if facet:
@@ -396,7 +398,13 @@ def plotClusterTrajectories(
         if show_traj:
             traj_df = df[df["Cluster"] == c]
             for _, g in traj_df.groupby(id_col, sort=False):
-                ax.plot(g[time_col], g[y_col], color=clr, alpha=traj_alpha, linewidth=traj_linewidth)
+                ax.plot(
+                    g[time_col],
+                    g[y_col],
+                    color=clr,
+                    alpha=traj_alpha,
+                    linewidth=traj_linewidth,
+                )
 
         # Ribbon
         if has_ribbon:
